@@ -12,86 +12,25 @@ class CountryFieldType extends FieldTypeAbstract
     public $columnType = 'string';
 
     /**
-     * Field type version.
-     *
-     * @var string
-     */
-    public $version = '1.1.0';
-
-    /**
-     * Field type author information.
-     *
-     * @var array
-     */
-    public $author = array(
-        'name' => 'AI Web Systems, Inc.',
-        'url'  => 'http://aiwebsystems.com/',
-    );
-
-    /**
      * Return the input used for forms.
      *
      * @return mixed
      */
-    public function formInput()
+    public function input()
     {
-        if ($countries = $this->getCountries() and !$this->field->is_required) {
-            $countries = array(null => $this->getPlaceholder()) + $countries;
-        }
-
         return \Form::select(
-            $this->formSlug,
-            $countries,
+            $this->formSlug(),
+            $this->countries(),
             $this->value
         );
     }
 
     /**
-     * Return the string output value.
-     *
-     * @return null
-     */
-    public function stringOutput()
-    {
-        return $this->getCountry($this->value);
-    }
-
-    /**
-     * Return the plugin output value.
-     *
-     * @return null
-     */
-    public function pluginOutput()
-    {
-        if ($this->value) {
-            return array(
-                'name' => $this->getCountry($this->value),
-                'code' => $this->value,
-            );
-        }
-
-        return null;
-    }
-
-    /**
-     * Get the country name from it's code.
-     *
-     * @param null $code
-     * @return null
-     */
-    public function getCountry($code)
-    {
-        $countries = $this->getCountries();
-
-        return isset($countries[$code]) ? $countries[$code] : null;
-    }
-
-    /**
-     * Get country options as an associative array.
+     * Return country options as a key => value array.
      *
      * @return array
      */
-    public function getCountries()
+    protected function countries()
     {
         return array(
             "AD" => "Andorra",
