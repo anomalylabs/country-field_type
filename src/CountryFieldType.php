@@ -1,4 +1,4 @@
-<?php namespace Streams\Addon\FieldType\Country;
+<?php namespace Anomaly\Streams\FieldType\Country;
 
 use Streams\Core\Addon\FieldTypeAbstract;
 
