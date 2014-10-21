@@ -1,8 +1,8 @@
-<?php namespace Anomaly\Streams\FieldType\Country;
+<?php namespace Anomaly\Streams\Addon\FieldType\Country;
 
-use Streams\Core\Addon\FieldTypeAbstract;
+use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAddon;
 
-class CountryFieldType extends FieldTypeAbstract
+class CountryFieldType extends FieldTypeAddon
 {
     /**
      * The database column type this field type uses.
