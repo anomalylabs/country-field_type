@@ -4,6 +4,8 @@ use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAddon;
 
 class CountryFieldType extends FieldTypeAddon
 {
+    protected $slug = 'country';
+
     /**
      * The database column type this field type uses.
      *
