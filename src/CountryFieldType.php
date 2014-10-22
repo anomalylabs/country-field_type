@@ -4,20 +4,6 @@ use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAddon;
 
 class CountryFieldType extends FieldTypeAddon
 {
-    protected $slug = 'country';
-
-    /**
-     * The database column type this field type uses.
-     *
-     * @var string
-     */
-    public $columnType = 'string';
-
-    /**
-     * Return the input used for forms.
-     *
-     * @return mixed
-     */
     public function input()
     {
         return \Form::select(
@@ -27,11 +13,6 @@ class CountryFieldType extends FieldTypeAddon
         );
     }
 
-    /**
-     * Return country options as a key => value array.
-     *
-     * @return array
-     */
     protected function countries()
     {
         return array(
