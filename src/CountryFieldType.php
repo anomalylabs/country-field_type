@@ -1,8 +1,8 @@
 <?php namespace Anomaly\Streams\Addon\FieldType\Country;
 
-use Anomaly\Streams\Platform\Addon\FieldType\FieldTypeAddon;
+use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
-class CountryFieldType extends FieldTypeAddon
+class CountryFieldType extends FieldType
 {
     public function input()
     {
