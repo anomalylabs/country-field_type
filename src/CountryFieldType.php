@@ -2,18 +2,71 @@
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
+/**
+ * Class CountryFieldType
+ *
+ * @link          http://anomaly.is/streams-platform
+ * @author        AnomalyLabs, Inc. <hello@anomaly.is>
+ * @author        Ryan Thompson <ryan@anomaly.is>
+ * @package       Anomaly\Streams\Addon\FieldType\Country
+ */
 class CountryFieldType extends FieldType
 {
-    public function input()
+
+    /**
+     * The input class.
+     *
+     * @var null
+     */
+    protected $class = null;
+
+    /**
+     * The input view.
+     *
+     * @var string
+     */
+    protected $inputView = 'field_type.country::input';
+
+    /**
+     * Get view data for the input.
+     *
+     * @return array
+     */
+    public function getInputData()
     {
-        return \Form::select(
-            $this->formSlug(),
-            $this->countries(),
-            $this->value
-        );
+        $data = parent::getInputData();
+
+        $data['options'] = $this->getOptions();
+
+        return $data;
     }
 
-    protected function countries()
+    /**
+     * Get the options.
+     *
+     * @return array
+     */
+    public function getOptions()
+    {
+        $options = [];
+
+        foreach ($this->getCountries() as $iso => $country) {
+
+            $selected = ($iso == $this->getValue());
+
+            $options[] = compact('iso', 'country', 'selected');
+        }
+
+        return $options;
+    }
+
+
+    /**
+     * Get the countries.
+     *
+     * @return array
+     */
+    public function getCountries()
     {
         return array(
             "AD" => "Andorra",
