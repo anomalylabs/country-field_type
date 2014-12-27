@@ -1,0 +1,9 @@
+<select name="{{ name }}" class="{{ class }} selectize">
+
+    {% for option in options %}
+
+        <option value="{{ option.iso }}" {{ option.selected ? 'selected' }}>{{ option.country }}</option>
+
+    {% endfor %}
+
+</select>
