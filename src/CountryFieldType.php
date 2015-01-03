@@ -1,4 +1,4 @@
-<?php namespace Anomaly\Streams\Addon\FieldType\Country;
+<?php namespace Anomaly\CountryFieldType;
 
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
