@@ -14,32 +14,11 @@ class CountryFieldType extends FieldType
 {
 
     /**
-     * The input class.
-     *
-     * @var null
-     */
-    protected $class = null;
-
-    /**
      * The input view.
      *
      * @var string
      */
     protected $inputView = 'anomaly.field_type.country::input';
-
-    /**
-     * Get view data for the input.
-     *
-     * @return array
-     */
-    public function getInputData()
-    {
-        $data = parent::getInputData();
-
-        $data['options'] = $this->getOptions();
-
-        return $data;
-    }
 
     /**
      * Get the options.
@@ -68,7 +47,7 @@ class CountryFieldType extends FieldType
      */
     public function getCountries()
     {
-        return array(
+        $countries = array(
             "AD" => "Andorra",
             "AE" => "United Arab Emirates",
             "AF" => "Afghanistan",
@@ -317,5 +296,15 @@ class CountryFieldType extends FieldType
             "ZM" => "Zambia",
             "ZW" => "Zimbabwe",
         );
+
+        /**
+         * Move keys for top options onto the top of
+         * the countries array.
+         */
+        foreach (array_reverse(array_get($this->config, 'top_options', ['US', 'GB'])) as $topOption) {
+            array_unshift($countries, array_get($countries, $topOption));
+        }
+
+        return array_filter($countries);
     }
 }
