@@ -8,7 +8,7 @@ use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
  * @link          http://anomaly.is/streams-platform
  * @author        AnomalyLabs, Inc. <hello@anomaly.is>
  * @author        Ryan Thompson <ryan@anomaly.is>
- * @package       Anomaly\Streams\Addon\FieldType\Country
+ * @package       Anomaly\CountryFieldType
  */
 class CountryFieldType extends FieldType
 {
@@ -21,33 +21,13 @@ class CountryFieldType extends FieldType
     protected $inputView = 'anomaly.field_type.country::input';
 
     /**
-     * Get the options.
+     * Get the countries.
      *
      * @return array
      */
     public function getOptions()
     {
-        $options = [];
-
-        foreach ($this->getCountries() as $iso => $country) {
-
-            $selected = ($iso == $this->getValue());
-
-            $options[] = compact('iso', 'country', 'selected');
-        }
-
-        return $options;
-    }
-
-
-    /**
-     * Get the countries.
-     *
-     * @return array
-     */
-    public function getCountries()
-    {
-        $countries = array(
+        $countries = [
             "AD" => "Andorra",
             "AE" => "United Arab Emirates",
             "AF" => "Afghanistan",
@@ -294,8 +274,8 @@ class CountryFieldType extends FieldType
             "YT" => "Mayotte",
             "ZA" => "South Africa",
             "ZM" => "Zambia",
-            "ZW" => "Zimbabwe",
-        );
+            "ZW" => "Zimbabwe"
+        ];
 
         /**
          * Move keys for top options onto the top of

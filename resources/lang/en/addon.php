@@ -2,5 +2,5 @@
 
 return [
     'name'        => 'Country',
-    'description' => 'A country dropdown field type.',
+    'description' => 'A country dropdown field type.'
 ];
