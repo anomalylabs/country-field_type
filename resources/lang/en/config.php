@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'top_countries' => [
+    'top_options' => [
         'label' => 'Top Options'
     ]
 ];
