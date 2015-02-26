@@ -282,7 +282,7 @@ class CountryFieldType extends FieldType
          * the countries array.
          */
         foreach (array_reverse(array_get($this->config, 'top_options', ['US', 'GB'])) as $topOption) {
-            array_unshift($countries, array_get($countries, $topOption));
+            $countries = [$topOption => array_pull($countries, $topOption)] + $countries;
         }
 
         return array_filter($countries);
