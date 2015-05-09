@@ -285,6 +285,16 @@ class CountryFieldType extends FieldType
             $countries = [$topOption => array_pull($countries, $topOption)] + $countries;
         }
 
-        return array_filter($countries);
+        return [null => $this->getPlaceholder()] + $countries;
+    }
+
+    /**
+     * Get the placeholder.
+     *
+     * @return null|string
+     */
+    public function getPlaceholder()
+    {
+        return $this->placeholder ?: 'anomaly.field_type.country::input.placeholder';
     }
 }
