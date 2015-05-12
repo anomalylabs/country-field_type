@@ -33,6 +33,10 @@ class CountryFieldTypePresenter extends FieldTypePresenter
             $key = $this->object->getValue();
         }
 
+        if (!$key) {
+            return null;
+        }
+
         return array_get($this->object->getOptions(), $key);
     }
 
@@ -46,6 +50,10 @@ class CountryFieldTypePresenter extends FieldTypePresenter
     {
         if (!$key) {
             $key = $this->object->getValue();
+        }
+
+        if (!$key) {
+            return null;
         }
 
         return trans('anomaly.field_type.country::country.' . $key);
