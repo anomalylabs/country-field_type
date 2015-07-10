@@ -22,40 +22,31 @@ class CountryFieldTypePresenter extends FieldTypePresenter
     protected $object;
 
     /**
-     * Get the value for country key.
+     * Get the country name.
      *
-     * @param null $key
      * @return null|string
      */
-    public function value($key = null)
+    public function name()
     {
-        if (!$key) {
-            $key = $this->object->getValue();
-        }
-
-        if (!$key) {
+        if (!$key = $this->object->getValue()) {
             return null;
         }
 
-        return array_get($this->object->getOptions(), $key);
+        return trans(array_get($this->object->getOptions(), $key));
     }
 
     /**
-     * Get the translated value for country key.
+     * Return the translated country name.
      *
-     * @param null $key
+     * @param      $locale
      * @return null|string
      */
-    public function translated($key = null)
+    public function translated($locale)
     {
-        if (!$key) {
-            $key = $this->object->getValue();
-        }
-
-        if (!$key) {
+        if (!$key = $this->object->getValue()) {
             return null;
         }
 
-        return trans('anomaly.field_type.country::country.' . $key);
+        return trans('anomaly.field_type.country::country.' . $key, [], $locale);
     }
 }

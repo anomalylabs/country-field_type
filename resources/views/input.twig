@@ -1,9 +1,7 @@
 <select name="{{ field_type.input_name }}" class="form-control">
 
-    {% for value, option in field_type.options %}
-
-        <option value="{{ value }}" {{ value == field_type.value ? 'selected' }}>{{ trans(option) }}</option>
-
+    {% for iso, name in field_type.options %}
+        <option value="{{ iso }}" {{ iso == field_type.value ? 'selected' }}>{{ trans(name) }}</option>
     {% endfor %}
 
 </select>
