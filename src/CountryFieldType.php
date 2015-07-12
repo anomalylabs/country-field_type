@@ -49,7 +49,13 @@ class CountryFieldType extends FieldType
 
         asort($options);
 
-        foreach (array_filter(array_reverse(explode("\r\n", array_get($this->getConfig(), 'top_options')))) as $iso) {
+        $topOptions = array_get($this->getConfig(), 'top_options');
+
+        if (!is_array($topOptions)) {
+            $topOptions = array_filter(array_reverse(explode("\r\n", $topOptions)));
+        }
+
+        foreach ($topOptions as $iso) {
             $options = [$iso => $options[$iso]] + $options;
         }
 
