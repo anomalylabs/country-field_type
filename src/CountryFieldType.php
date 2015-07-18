@@ -56,7 +56,9 @@ class CountryFieldType extends FieldType
         }
 
         foreach ($topOptions as $iso) {
-            $options = [$iso => $options[$iso]] + $options;
+            if (isset($options[$iso])) {
+                $options = [$iso => $options[$iso]] + $options;
+            }
         }
 
         return [null => $this->getPlaceholder()] + array_unique($options);
