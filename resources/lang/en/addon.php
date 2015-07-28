@@ -1,6 +1,7 @@
 <?php
 
 return [
-    'name'        => 'Country',
+    'title'       => 'Country',
+    'name'        => 'Country Field Type',
     'description' => 'A country dropdown field type.'
 ];

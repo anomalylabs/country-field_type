@@ -1,8 +1,6 @@
 # Output
 
-This field type returns the addon instance as a value. You may access the object as normal.
-
-**Examples:**
+This field type returns the selected 2-digit ISO country code by default.
 
 ### `name`
 
