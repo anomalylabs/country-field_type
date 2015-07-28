@@ -10,7 +10,7 @@ Get the country name
 // Twig Usage
 {{ entry.example.name }}
 
-// API Usage
+// API usage
 $entry->example->name();
 ```
 
@@ -22,6 +22,6 @@ Get the translated country name in a specified locale
 // Twig Usage
 {{ entry.example.translated('es') }}
 
-// API Usage
+// API usage
 $entry->example->translated('es');
 ```
