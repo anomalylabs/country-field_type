@@ -5,7 +5,7 @@
 ```
 protected $fields = [
     'example' => [
-        'type'   => 'anomaly.field_type.colorpicker',
+        'type'   => 'anomaly.field_type.country',
         'config' => [
             'default_value' => 'US',
             'top_options'   => [
