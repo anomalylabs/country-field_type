@@ -1,5 +1,6 @@
 <?php namespace Anomaly\CountryFieldType;
 
+use Anomaly\CountryFieldType\Command\BuildOptions;
 use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
 
 /**
@@ -26,8 +27,16 @@ class CountryFieldType extends FieldType
      * @var array
      */
     protected $config = [
-        'default_value' => 'US'
+        'default_value' => 'US',
+        'handler'       => 'Anomaly\CountryFieldType\CountryFieldTypeOptions@handle'
     ];
+
+    /**
+     * The dropdown options.
+     *
+     * @var null|array
+     */
+    protected $options = null;
 
     /**
      * Get the countries.
@@ -36,18 +45,9 @@ class CountryFieldType extends FieldType
      */
     public function getOptions()
     {
-        $countries = config('anomaly.field_type.country::countries');
-
-        $names = array_map(
-            function ($iso) {
-                return 'anomaly.field_type.country::country.' . $iso;
-            },
-            $countries
-        );
-
-        $options = array_combine($countries, $names);
-
-        asort($options);
+        if ($this->options === null) {
+            $this->dispatch(new BuildOptions($this));
+        }
 
         $topOptions = array_get($this->getConfig(), 'top_options');
 
@@ -56,12 +56,25 @@ class CountryFieldType extends FieldType
         }
 
         foreach ($topOptions as $iso) {
-            if (isset($options[$iso])) {
-                $options = [$iso => $options[$iso]] + $options;
+            if (isset($this->options[$iso])) {
+                $this->options = [$iso => $this->options[$iso]] + $this->options;
             }
         }
 
-        return [null => $this->getPlaceholder()] + array_unique($options);
+        return [null => $this->getPlaceholder()] + array_unique($this->options);
+    }
+
+    /**
+     * Set the options.
+     *
+     * @param array $options
+     * @return $this
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+
+        return $this;
     }
 
     /**
