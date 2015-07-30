@@ -47,7 +47,7 @@ The options handler callable string. Any valid callable class string can be used
 
 The handler is responsible for setting the available options on the field type instance.
 
-**NOTE:** This option can not be through the GUI configuration.
+**NOTE:** This option can not be set through the GUI configuration.
 
 
 <a name="output"></a>
@@ -57,7 +57,7 @@ This field type returns the selected 2-digit ISO country code by default.
 
 ### `name)_`
 
-Get the country name
+Returns the country name
 
     // Twig Usage
     {{ entry.example.name }}
@@ -69,7 +69,7 @@ Get the country name
 
 `locale` - Any valid i18n language code. If none is provided the `config('app.locale')` value will be used.
 
-Get the translated country name in a specified locale.
+Returns the translated country name in a specified locale.
 
     // Twig Usage
     {{ entry.example.translated('es') }}
