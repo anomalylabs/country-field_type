@@ -55,7 +55,7 @@ The handler is responsible for setting the available options on the field type i
 
 This field type returns the selected 2-digit ISO country code by default.
 
-### `name)_`
+### `name()`
 
 Returns the country name
 
@@ -67,7 +67,7 @@ Returns the country name
 
 ### `translated($locale = null)`
 
-`locale` - Any valid i18n language code. If none is provided the `config('app.locale')` value will be used.
+`$locale` - Any valid i18n language code. If none is provided the `config('app.locale')` value will be used.
 
 Returns the translated country name in a specified locale.
 
