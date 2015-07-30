@@ -1,4 +1,4 @@
-# Colorpicker Field Type
+# Country Field Type
 
 - [Introduction](#introduction)
 - [Configuration](#configuration)
