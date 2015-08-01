@@ -22,6 +22,13 @@ class CountryFieldType extends FieldType
     protected $inputView = 'anomaly.field_type.country::input';
 
     /**
+     * The filter view.
+     *
+     * @var string
+     */
+    protected $filterView = 'anomaly.field_type.country::filter';
+
+    /**
      * The default config.
      *
      * @var array
@@ -61,7 +68,7 @@ class CountryFieldType extends FieldType
             }
         }
 
-        return [null => $this->getPlaceholder()] + array_unique($this->options);
+        return array_unique($this->options);
     }
 
     /**
