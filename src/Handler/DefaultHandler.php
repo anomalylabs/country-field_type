@@ -1,14 +1,16 @@
-<?php namespace Anomaly\CountryFieldType;
+<?php namespace Anomaly\CountryFieldType\Handler;
+
+use Anomaly\CountryFieldType\CountryFieldType;
 
 /**
- * Class CountryFieldTypeOptions
+ * Class DefaultHandler
  *
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\CountryFieldType
+ * @package       Anomaly\CountryFieldType\Handler
  */
-class CountryFieldTypeOptions
+class DefaultHandler
 {
 
     /**
