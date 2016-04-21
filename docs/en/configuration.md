@@ -1,9 +1,9 @@
 # Configuration
 
+- [Addon Configuration](#addon)
 - [Basic Configuration](#basic)
 - [Extra Configuration](#extra)
 - [Option Handlers](#handlers)
-- [Customizing Country Options](#customizing)
 
 <hr>
 
@@ -21,6 +21,19 @@ Below is the full configuration available with defaults.
         ]
     ];
     {% endcode %}
+
+<hr>
+
+<a name="addon"></a>
+## Addon Configuration
+
+The country dropdown options are controlled by the country field type's `countries.php` configuration file by default.
+
+You can override these options by overloading the configuration file with a config file of your own at `/resources/{reference}/config/addons/country-field_type/countries.php`
+
+<div class="alert alert-success">
+<strong>Contribute:</strong> If you have options to add or have found an error, submit a pull request to <a href="https://github.com/anomalylabs/country-field_type" target="_blank">https://github.com/anomalylabs/country-field_type</a>
+</div>
 
 <hr>
 
@@ -99,16 +112,3 @@ The callable string is called via Laravel's service container. The {{ code('php'
         }
     }
     {% endcode %}
-
-<hr>
-
-<a name="customizing"></a>
-## Customizing Country Options
-
-The country dropdown options are controlled by the country field type's `countries.php` configuration file by default.
-
-You can override these options by overloading the configuration file with a config file of your own at `/resources/{reference}/config/addons/country-field_type/countries.php`
-
-<div class="alert alert-success">
-<strong>Contribute:</strong> If you have options to add or have found an error, submit a pull request to <a href="https://github.com/anomalylabs/country-field_type" target="_blank">https://github.com/anomalylabs/country-field_type</a>
-</div>
