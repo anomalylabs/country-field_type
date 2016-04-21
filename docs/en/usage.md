@@ -9,23 +9,23 @@
 <a name="mutator"></a>
 ## Setting Values
 
-You must set the country field type value with a key or keys from the available options.
+You must set the country field type value with a valid ISO-2 country code from the available options.
 
-{{ code('php', '$entry->example = "foo";') }}
+{{ code('php', '$entry->example = "US";') }}
 
-You can set multiple values with an array.
-
-{{ code('php', '$entry->example = ["foo", "bar"];') }}
+<div class="alert alert-info">
+<strong>Note: </strong> The value is case insensitive and is changed to uppercase when set.
+</div>
 
 <hr>
 
 <a name="output"></a>
 ## Basic Output
 
-The addon field type returns an array of value keys.
+The country field type returns `null` or the selected ISO-2 country code.
 
 {% code php %}
-$entry->example; // ["foo", "bar"]
+$entry->example; // "US"
 {% endcode %}
 
 <hr>
@@ -35,25 +35,23 @@ $entry->example; // ["foo", "bar"]
 
 When accessing the value from a decorated entry, like one in a view, the country field type presenter is returned instead.
 
-#### Selections
+#### Name
 
-Return the selected values in `key => value` format.
+Return the selected country's name, optionally translated into a different locale.
+
+<div class="alert alert-success">
+<strong>Contribute:</strong> To submit alternative translations for country names submit a pull request to <a href="https://github.com/anomalylabs/country-field_type" target="_blank">https://github.com/anomalylabs/country-field_type</a>
+</div>
 
 {% code php %}
-$entry->example->selections(); // ["foo" => "FOO", "bar" => "BAR"]
+$entry->example->name();     // "United States"
+$entry->example->name("es"); // "Estados Unidos"
 {% endcode %}
 
-#### Keys
+#### Code
 
-Return the selected value keys only.
-
-{% code php %}
-$entry->example->keys(); // ["foo", "bar"]
-{% endcode %}
-
-#### Values
-To return the selected value strings only, use the `values` method.
+Return the selected country's ISO-2 code.
 
 {% code php %}
-$entry->example->values(); // ["FOO", "BAR"]
+$entry->example->code(); // "US"
 {% endcode %}

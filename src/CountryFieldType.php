@@ -34,8 +34,7 @@ class CountryFieldType extends FieldType
      * @var array
      */
     protected $config = [
-        'default_value' => 'US',
-        'handler'       => 'Anomaly\CountryFieldType\Handler\DefaultHandler@handle'
+        'handler' => 'Anomaly\CountryFieldType\Handler\DefaultHandler@handle'
     ];
 
     /**

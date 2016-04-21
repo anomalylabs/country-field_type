@@ -22,17 +22,17 @@ class CountryFieldTypePresenter extends FieldTypePresenter
     protected $object;
 
     /**
-     * Get the country name.
+     * Get the country code.
      *
      * @return null|string
      */
-    public function name()
+    public function code()
     {
         if (!$key = $this->object->getValue()) {
             return null;
         }
 
-        return trans(array_get($this->object->getOptions(), $key));
+        return strtoupper($key);
     }
 
     /**
@@ -41,7 +41,7 @@ class CountryFieldTypePresenter extends FieldTypePresenter
      * @param  null $locale
      * @return null|string
      */
-    public function translated($locale = null)
+    public function name($locale = null)
     {
         if (!$key = $this->object->getValue()) {
             return null;

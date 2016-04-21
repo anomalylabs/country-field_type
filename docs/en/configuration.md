@@ -3,7 +3,7 @@
 - [Basic Configuration](#basic)
 - [Extra Configuration](#extra)
 - [Option Handlers](#handlers)
-- [Option Groups](#groups)
+- [Customizing Country Options](#customizing)
 
 <hr>
 
@@ -15,7 +15,7 @@ Below is the full configuration available with defaults.
             "type"   => "anomaly.field_type.country",
             "config" => [
                 "default_value" => null,
-                "options"       => null,
+                "top_options"   => null,
                 "handler"       => "Anomaly\CountryFieldType\Handler\DefaultHandler@handle"
             ]
         ]
@@ -29,48 +29,26 @@ Below is the full configuration available with defaults.
 
 ### Default Value
 
-{{ code('php', '"default_type" => false') }}
+{{ code('php', '"default_type" => "US"') }}
 
-The `default_value` is a core option. This field type accepts any key from the options.
+The `default_value` is a core option. This field type accepts any available country from the options.
 
-### Checkbox Options
+### Top Options
 
-You can set the available options as an array of key => value pairs.
-{% code php %}
-"options" => [
-    "foo" => "FOO",
-    "bar" => "BAR"
-]
-{% endcode %}
+{{ code('php', '"top_options" => ["US", "CA"]') }}
 
-<hr>
-
-<a name="groups"></a>
-## Option Groups
-
-Checkbox options can be organized into groups by nesting the options into keyed groups. The _key_ is translated into the group label.
-
-{% code php %}
-"options" => [
-    "module::message.examples" => [
-        "foo" => "FOO",
-        "bar" => "BAR"
-    ]
-]
-{% endcode %}
-
-<hr>
+Specify the country options that are pushed to the top of the dropdown. This is helps prevent users from having to scroll through less common options.
 
 <a name="handlers"></a>
 ## Option Handlers
 
-Option handlers are responsible for setting the available options on the field type. You can define your own option handler to add your own logic to available dropdown options.
+Option handlers are responsible for setting the available country options on the field type. You can define your own option handler to add your own logic to available dropdown options.
 
 ### Defining Custom Handlers
 
 Custom handlers can be defined as a callable string.
 
-{{ code('php', '"handler" => "App/Example/MyOptions@handle"') }}
+{{ code('php', '"handler" => "App/Example/MyCountries@handle"') }}
 
 You can also define custom handlers as a closure.
 
@@ -85,8 +63,8 @@ You can also define custom handlers as a closure.
                 "handler" => function (CountryFieldType $fieldType) {
                     $fieldtype->setOptions(
                         [
-                            "foo" => "FOO",
-                            "bar" => "BAR"
+                            "US" => "anomaly.field_type.country::country.us",
+                            "CA" => "anomaly.field_type.country::country.ca"
                         ]
                     );
                 }
@@ -99,7 +77,7 @@ You can also define custom handlers as a closure.
 
 Building custom option handlers could not be easier. Simply create the class with the method you defined in the config option.
 
-{{ code('php', '"handler" => "App/Example/MyOptions@handle"') }}
+{{ code('php', '"handler" => "App/Example/MyCountries@handle"') }}
 
 The callable string is called via Laravel's service container. The {{ code('php', '$fieldType') }} is passed as an argument.
 
@@ -108,7 +86,7 @@ The callable string is called via Laravel's service container. The {{ code('php'
 </div>
 
     {% code php %}
-    class MyOptions
+    class MyCountries
     {
         public function handle(CountryFieldType $fieldType)
         {
@@ -121,3 +99,16 @@ The callable string is called via Laravel's service container. The {{ code('php'
         }
     }
     {% endcode %}
+
+<hr>
+
+<a name="customizing"></a>
+## Customizing Country Options
+
+The country dropdown options are controlled by the country field type's `countries.php` configuration file by default.
+
+You can override these options by overloading the configuration file with a config file of your own at `/resources/{reference}/config/addons/country-field_type/countries.php`
+
+<div class="alert alert-success">
+<strong>Contribute:</strong> If you have options to add or have found an error, submit a pull request to <a href="https://github.com/anomalylabs/country-field_type" target="_blank">https://github.com/anomalylabs/country-field_type</a>
+</div>

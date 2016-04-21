@@ -9,4 +9,4 @@
 
 `anomaly.field_type.country`
 
-The country field type provides a series of multiple checkbox input options.
+The country field type provides a customizable Country dropdown input.
