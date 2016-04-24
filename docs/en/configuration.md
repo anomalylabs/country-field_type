@@ -9,7 +9,6 @@
 
 Below is the full configuration available with defaults.
 
-    {% code php %}
     protected $fields = [
         "example" => [
             "type"   => "anomaly.field_type.country",
@@ -20,7 +19,6 @@ Below is the full configuration available with defaults.
             ]
         ]
     ];
-    {% endcode %}
 
 <hr>
 
@@ -42,13 +40,13 @@ You can override these options by overloading the configuration file with a conf
 
 ### Default Value
 
-{{ code('php', '"default_type" => "US"') }}
+    "default_type" => "US"
 
 The `default_value` is a core option. This field type accepts any available country from the options.
 
 ### Top Options
 
-{{ code('php', '"top_options" => ["US", "CA"]') }}
+    "top_options" => ["US", "CA"]
 
 Specify the country options that are pushed to the top of the dropdown. This is helps prevent users from having to scroll through less common options.
 
@@ -61,7 +59,7 @@ Option handlers are responsible for setting the available country options on the
 
 Custom handlers can be defined as a callable string.
 
-{{ code('php', '"handler" => "App/Example/MyCountries@handle"') }}
+    "handler" => "App/Example/MyCountries@handle"
 
 You can also define custom handlers as a closure.
 
@@ -69,7 +67,6 @@ You can also define custom handlers as a closure.
 <strong>Remember:</strong> Closures can not be stored in the database so you need to define closures in the form builder.
 </div>
 
-    {% code php %}
     protected $fields = [
         "example" => [
             "config" => [
@@ -84,21 +81,19 @@ You can also define custom handlers as a closure.
             ]
         ]
     ];
-    {% endcode %}
 
 ### Building Custom Handlers
 
 Building custom option handlers could not be easier. Simply create the class with the method you defined in the config option.
 
-{{ code('php', '"handler" => "App/Example/MyCountries@handle"') }}
+    "handler" => "App/Example/MyCountries@handle"
 
-The callable string is called via Laravel's service container. The {{ code('php', '$fieldType') }} is passed as an argument.
+The callable string is called via Laravel's service container. The `FieldType $fieldType` is passed as an argument.
 
 <div class="alert alert-primary">
 <strong>Note:</strong> Because handlers are called through Laravel's service container, you can automatically inject dependencies into the construct and method.
 </div>
 
-    {% code php %}
     class MyCountries
     {
         public function handle(CountryFieldType $fieldType)
@@ -111,4 +106,3 @@ The callable string is called via Laravel's service container. The {{ code('php'
             );
         }
     }
-    {% endcode %}

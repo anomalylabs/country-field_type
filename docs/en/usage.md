@@ -11,7 +11,7 @@
 
 You must set the country field type value with a valid ISO-2 country code from the available options.
 
-{{ code('php', '$entry->example = "US";') }}
+    $entry->example = "US";
 
 <div class="alert alert-info">
 <strong>Note: </strong> The value is case insensitive and is changed to uppercase when set.
@@ -24,9 +24,7 @@ You must set the country field type value with a valid ISO-2 country code from t
 
 The country field type returns `null` or the selected ISO-2 country code.
 
-{% code php %}
-$entry->example; // "US"
-{% endcode %}
+    $entry->example; // US
 
 <hr>
 
@@ -43,15 +41,11 @@ Return the selected country's name, optionally translated into a different local
 <strong>Contribute:</strong> To submit alternative translations for country names submit a pull request to <a href="https://github.com/anomalylabs/country-field_type" target="_blank">https://github.com/anomalylabs/country-field_type</a>
 </div>
 
-{% code php %}
-$entry->example->name();     // "United States"
-$entry->example->name("es"); // "Estados Unidos"
-{% endcode %}
+    $entry->example->name();     // United States
+    $entry->example->name("es"); // Estados Unidos
 
 #### Code
 
 Return the selected country's ISO-2 code.
 
-{% code php %}
-$entry->example->code(); // "US"
-{% endcode %}
+    $entry->example->code(); // US
