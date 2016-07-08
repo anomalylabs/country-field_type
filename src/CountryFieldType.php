@@ -90,6 +90,10 @@ class CountryFieldType extends FieldType
      */
     public function getPlaceholder()
     {
-        return $this->placeholder ?: 'anomaly.field_type.country::input.placeholder';
+        if (!$this->placeholder && !$this->isRequired()) {
+            return 'anomaly.field_type.country::input.placeholder';
+        }
+
+        return $this->placeholder;
     }
 }

@@ -3,8 +3,8 @@
         name="{{ field_type.input_name }}"
         {{ field_type.readonly ? 'readonly' }}>
 
-    {% if not field_type.required %}
-        <option>{{ trans(field_type.placeholder) }}</option>
+    {% if field_type.placeholder %}
+        <option value="">{{ trans(field_type.placeholder) }}</option>
     {% endif %}
 
     {% for iso, name in field_type.options %}
