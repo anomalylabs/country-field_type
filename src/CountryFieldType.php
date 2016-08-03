@@ -15,6 +15,13 @@ class CountryFieldType extends FieldType
 {
 
     /**
+     * The field class.
+     *
+     * @var string
+     */
+    protected $class = 'c-select form-control';
+
+    /**
      * The input view.
      *
      * @var string
