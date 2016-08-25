@@ -9,7 +9,6 @@ use Anomaly\Streams\Platform\Addon\FieldType\FieldType;
  * @link          http://pyrocms.com/
  * @author        PyroCMS, Inc. <support@pyrocms.com>
  * @author        Ryan Thompson <ryan@pyrocms.com>
- * @package       Anomaly\CountryFieldType
  */
 class CountryFieldType extends FieldType
 {
@@ -41,7 +40,7 @@ class CountryFieldType extends FieldType
      * @var array
      */
     protected $config = [
-        'handler' => 'Anomaly\CountryFieldType\Handler\DefaultHandler@handle'
+        'handler' => 'Anomaly\CountryFieldType\Handler\DefaultHandler@handle',
     ];
 
     /**
@@ -80,7 +79,7 @@ class CountryFieldType extends FieldType
     /**
      * Set the options.
      *
-     * @param array $options
+     * @param  array $options
      * @return $this
      */
     public function setOptions(array $options)

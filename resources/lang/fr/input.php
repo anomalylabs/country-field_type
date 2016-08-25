@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'placeholder' => 'Choisissez un pays.'
+    'placeholder' => 'Choisissez un pays.',
 ];

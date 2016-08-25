@@ -247,5 +247,5 @@ return [
     'YT' => 'Mayotte',
     'ZA' => 'Afrique du Sud',
     'ZM' => 'Zambie',
-    'ZW' => 'Zimbabwe'
+    'ZW' => 'Zimbabwe',
 ];
