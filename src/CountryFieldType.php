@@ -15,6 +15,13 @@ class CountryFieldType extends FieldType
 {
 
     /**
+     * The input class.
+     *
+     * @var string
+     */
+    protected $class = null;
+
+    /**
      * The input view.
      *
      * @var string
