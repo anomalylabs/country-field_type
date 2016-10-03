@@ -1,6 +1,17 @@
 <?php
 
 return [
+    'mode'          => [
+        'required' => true,
+        'type'     => 'anomaly.field_type.select',
+        'config'   => [
+            'default_value' => 'input',
+            'options'       => [
+                'input'    => 'anomaly.field_type.country::config.mode.option.input',
+                'dropdown' => 'anomaly.field_type.country::config.mode.option.dropdown',
+            ],
+        ],
+    ],
     'top_options'   => [
         'type' => 'anomaly.field_type.textarea',
     ],
