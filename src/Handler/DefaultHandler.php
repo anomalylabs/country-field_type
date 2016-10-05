@@ -21,11 +21,11 @@ class DefaultHandler
      */
     public function handle(CountryFieldType $fieldType, Repository $config)
     {
-        $countries = array_keys($config->get('anomaly.field_type.country::countries'));
+        $countries = array_keys($config->get('streams::countries.available'));
 
         $names = array_map(
             function ($iso) {
-                return 'anomaly.field_type.country::country.' . $iso;
+                return 'streams::country.' . $iso;
             },
             $countries
         );

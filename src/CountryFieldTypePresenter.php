@@ -37,7 +37,7 @@ class CountryFieldTypePresenter extends FieldTypePresenter
     /**
      * Return the translated country name.
      *
-     * @param  null        $locale
+     * @param  null $locale
      * @return null|string
      */
     public function name($locale = null)
@@ -46,6 +46,50 @@ class CountryFieldTypePresenter extends FieldTypePresenter
             return null;
         }
 
-        return trans('anomaly.field_type.country::country.' . $key, [], $locale);
+        return trans('streams::country.' . $key, [], $locale);
+    }
+
+    /**
+     * Return the country's currency.
+     *
+     * @return null|array
+     */
+    public function currency()
+    {
+        if (!$key = $this->code()) {
+            return null;
+        }
+
+        if (!$code = config('streams::countries.available.' . $key . '.currency')) {
+            return null;
+        }
+
+        if (!$currency = config('streams::currencies.supported.' . $code)) {
+            return null;
+        }
+
+        return array_merge($currency, compact('code'));
+    }
+
+    /**
+     * Return the country's locale.
+     *
+     * @return null|array
+     */
+    public function locale()
+    {
+        if (!$key = $this->code()) {
+            return null;
+        }
+
+        if (!$code = config('streams::countries.available.' . $key . '.currency')) {
+            return null;
+        }
+
+        if (!$locale = config('streams::locales.supported.' . $code)) {
+            return null;
+        }
+
+        return array_merge($locale, compact('code'));
     }
 }
