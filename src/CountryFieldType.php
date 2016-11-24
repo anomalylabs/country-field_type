@@ -150,6 +150,6 @@ class CountryFieldType extends FieldType
             return $class;
         }
 
-        return $this->config('mode') == 'dropdown' ? 'c-select form-control' : 'form-control';
+        return $this->config('mode') == 'dropdown' ? 'custom-select form-control' : 'form-control';
     }
 }
