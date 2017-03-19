@@ -7,6 +7,7 @@ return [
         'option'       => [
             'input'    => 'Text Input',
             'dropdown' => 'Dropdown',
+            'search'   => 'Search',
         ],
     ],
     'top_options'   => [

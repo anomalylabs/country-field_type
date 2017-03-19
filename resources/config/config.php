@@ -9,6 +9,7 @@ return [
             'options'       => [
                 'input'    => 'anomaly.field_type.country::config.mode.option.input',
                 'dropdown' => 'anomaly.field_type.country::config.mode.option.dropdown',
+                'search'   => 'anomaly.field_type.country::config.mode.option.search',
             ],
         ],
     ],
