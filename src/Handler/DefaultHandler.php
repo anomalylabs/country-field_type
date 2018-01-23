@@ -32,7 +32,7 @@ class DefaultHandler
 
         $options = array_combine($countries, $names);
 
-        sort($options);
+        asort($options);
 
         $fieldType->setOptions($options);
     }
