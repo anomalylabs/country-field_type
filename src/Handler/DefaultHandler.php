@@ -25,7 +25,7 @@ class DefaultHandler
 
         $names = array_map(
             function ($iso) {
-                return 'streams::country.' . $iso;
+                return trans('streams::country.' . $iso);
             },
             $countries
         );
