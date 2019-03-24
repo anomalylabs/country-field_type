@@ -92,4 +92,18 @@ class CountryFieldTypePresenter extends FieldTypePresenter
 
         return array_merge($locale, compact('code'));
     }
+
+    /**
+     * Return the country's calling code.
+     *
+     * @return null|array
+     */
+    public function callingCode()
+    {
+        if (!$key = $this->code()) {
+            return null;
+        }
+
+        return config('streams::countries.available.' . $key . '.calling_code');
+    }
 }
