@@ -1,7 +1,7 @@
 <?php namespace Anomaly\CountryFieldType\Handler;
 
 use Anomaly\CountryFieldType\CountryFieldType;
-use Illuminate\Contracts\Config\Repository;
+
 
 /**
  * Class DefaultHandler
@@ -17,11 +17,11 @@ class DefaultHandler
      * Handle the options.
      *
      * @param CountryFieldType $fieldType
-     * @param Repository       $config
+     * @param Repository $config
      */
     public function handle(CountryFieldType $fieldType, Repository $config)
     {
-        $countries = array_keys($config->get('streams::countries.available'));
+        $countries = array_keys(config('streams::countries.available'));
 
         $names = array_map(
             function ($iso) {

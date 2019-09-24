@@ -3,7 +3,6 @@
 use Anomaly\CountryFieldType\CountryFieldType;
 use Illuminate\Container\Container;
 
-
 /**
  * Class BuildOptions
  *
@@ -26,7 +25,7 @@ class BuildOptions
      *
      * @param CountryFieldType $fieldType
      */
-    function __construct(CountryFieldType $fieldType)
+    public function __construct(CountryFieldType $fieldType)
     {
         $this->fieldType = $fieldType;
     }
