@@ -80,7 +80,7 @@ class CountryFieldType extends FieldType
     public function getOptions()
     {
         if ($this->options === null) {
-            dispatch_sync(new BuildOptions($this));
+            $this->dispatch(new BuildOptions($this));
         }
 
         $topOptions = array_get($this->getConfig(), 'top_options');
