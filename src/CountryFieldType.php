@@ -136,7 +136,13 @@ class CountryFieldType extends FieldType
             return $view;
         }
 
-        return 'anomaly.field_type.country::' . $this->config('mode', 'input');
+        $mode = $this->config('mode', 'input');
+
+        if (!in_array($mode, ['input', 'dropdown', 'search'], true)) {
+            $mode = 'input';
+        }
+
+        return 'anomaly.field_type.country::' . $mode;
     }
 
     /**
