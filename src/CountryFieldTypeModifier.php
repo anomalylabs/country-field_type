@@ -16,21 +16,29 @@ class CountryFieldTypeModifier extends FieldTypeModifier
      * Modify the value.
      *
      * @param $value
-     * @return string
+     * @return string|null
      */
     public function modify($value)
     {
-        return strtoupper($value);
+        if (is_array($value) || is_object($value)) {
+            return null;
+        }
+
+        return strtoupper((string)$value);
     }
 
     /**
      * Restore the value.
      *
      * @param $value
-     * @return string
+     * @return string|null
      */
     public function restore($value)
     {
-        return strtoupper($value);
+        if (is_array($value) || is_object($value)) {
+            return null;
+        }
+
+        return strtoupper((string)$value);
     }
 }

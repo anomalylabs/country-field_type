@@ -22,6 +22,10 @@ class ValidateCountry
      */
     public function handle(CountryFieldType $fieldType, $value)
     {
-        return in_array(strtoupper($value), array_keys($fieldType->getOptions()));
+        if (!is_string($value)) {
+            return false;
+        }
+
+        return in_array(strtoupper($value), array_keys($fieldType->getOptions()), true);
     }
 }
